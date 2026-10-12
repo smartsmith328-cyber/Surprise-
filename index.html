@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Birthday Oluwa Dunmininu! 🎉</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Canvas Overlay for Particle & Confetti Animations -->
+  <canvas id="particles-canvas"></canvas>
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- Ambient Floating Emojis -->
+  <div id="floating-bg"></div>
+
+  <!-- Audio Element -->
+  <audio id="bg-music" src="a-cheerful-ukulele-waltz.mp3" preload="auto" loop></audio>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <div class="gift-loader">🎁</div>
+      <h2>Unwrapping something special for you...</h2>
+      <div class="progress-bar-container">
+        <div id="loader-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Container -->
+  <main id="main-content" class="hidden">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero-section">
+      <div class="hero-content">
+        <h1 class="glow-text">Happy Birthday</h1>
+        <h2 class="name-title highlight-name">Oluwa Dunmininu</h2>
+        <p class="tagline">🎂 A Special Day for a Special Person ❤️</p>
+        
+        <button id="start-btn" class="primary-btn pulse-glow">Tap to Begin 🎁</button>
+      </div>
+    </section>
+
+    <!-- WRAPPER FOR SCROLLING SECTIONS -->
+    <div id="experience-wrapper" class="hidden-flow">
+
+      <!-- 1. COUNTDOWN TIMER SECTION -->
+      <section class="section-container" id="countdown-section">
+        <h2 class="section-title">Counting Down To Your Special Day ⏰</h2>
+        <div class="countdown-grid">
+          <div class="cd-box"><span id="cd-days">00</span><label>Days</label></div>
+          <div class="cd-box"><span id="cd-hours">00</span><label>Hours</label></div>
+          <div class="cd-box"><span id="cd-minutes">00</span><label>Minutes</label></div>
+          <div class="cd-box"><span id="cd-seconds">00</span><label>Seconds</label></div>
+        </div>
+        <div id="birthday-alert" class="hidden birthday-banner">🎉 IT'S YOUR BIRTHDAY, OLUWA DUNMININU! 🎉</div>
+      </section>
+
+      <!-- 2. GIFT BOX SURPRISE SECTION -->
+      <section class="section-container" id="gift-section">
+        <h2 class="section-title">A Special Surprise For You 📦</h2>
+        <p class="section-subtitle">Tap the gift box to open!</p>
+        
+        <div class="gift-container">
+          <div id="gift-box" class="gift-box">
+            <div class="gift-lid">🎁</div>
+            <div class="gift-body"></div>
+          </div>
+          
+          <div id="gift-message" class="hidden-card card-glass">
+            <h3>✨ To My Everything ✨</h3>
+            <p>Every single day with you feels like a gift. You light up my life in ways words can't even express. I love you endlessly! ❤️</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. TYPEWRITER MESSAGE SECTION -->
+      <section class="section-container" id="message-section">
+        <div class="card-glass message-card">
+          <h2 class="card-title">💌 Final Message</h2>
+          <div class="typewriter-box">
+            <p id="typewriter-text"></p>
+            <span class="cursor">|</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. PHOTO MEMORIES GALLERY -->
+      <section class="section-container" id="gallery-section">
+        <h2 class="section-title">Precious Memories 📸</h2>
+        <p class="section-subtitle">Tap any photo to view in full screen</p>
+        
+        <div class="gallery-scroll-wrapper">
+          <div class="gallery-grid">
+            <!-- Photo 1 -->
+            <div class="polaroid" data-src="1790612887678.jpg" data-caption="🦋 Look at You, Birthday Girl! 😍">
+              <div class="polaroid-img-wrapper">
+                <img src="1790612887678.jpg" alt="Memory 1" loading="lazy" />
+              </div>
+              <p class="caption">🦋 Look at You, Birthday Girl! 😍</p>
+            </div>
+
+            <!-- Photo 2 -->
+            <div class="polaroid" data-src="1790612893969.jpg" data-caption="✨ Your Time to Shine, Birthday Girl! 💖🎂">
+              <div class="polaroid-img-wrapper">
+                <img src="1790612893969.jpg" alt="Memory 2" loading="lazy" />
+              </div>
+              <p class="caption">✨ Your Time to Shine, Birthday Girl! 💖🎂</p>
+            </div>
+
+            <!-- Photo 3 -->
+            <div class="polaroid" data-src="1790631109028.jpg" data-caption="🧸 A Little Throwback">
+              <div class="polaroid-img-wrapper">
+                <img src="1790631109028.jpg" alt="Memory 3" loading="lazy" />
+              </div>
+              <p class="caption">🧸 A Little Throwback</p>
+            </div>
+
+            <!-- Photo 4 -->
+            <div class="polaroid" data-src="1790631166650.jpg" data-caption="👑 Cheers to Your New Chapter! 🥂❤️">
+              <div class="polaroid-img-wrapper">
+                <img src="1790631166650.jpg" alt="Memory 4" loading="lazy" />
+              </div>
+              <p class="caption">👑 Cheers to Your New Chapter! 🥂❤️</p>
+            </div>
+
+            <!-- Photo 5 -->
+            <div class="polaroid" data-src="1790631240495.jpg" data-caption="✨ Your Time to Shine, Birthday Girl! 💖🎂">
+              <div class="polaroid-img-wrapper">
+                <img src="1790631240495.jpg" alt="Memory 5" loading="lazy" />
+              </div>
+              <p class="caption">✨ Your Time to Shine, Birthday Girl! 💖🎂</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. INTERACTIVE CAKE & WISH -->
+      <section class="section-container" id="cake-section">
+        <h2 class="section-title">Make A Wish! 🎂</h2>
+        <p class="section-subtitle">Tap the cake to blow out the candles!</p>
+        
+        <div class="cake-wrapper">
+          <div id="cake" class="cake">
+            <div class="candle-container">
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+              <div class="candle"><div class="flame"></div></div>
+            </div>
+            <div class="top-layer"></div>
+            <div class="middle-layer"></div>
+            <div class="bottom-layer"></div>
+          </div>
+        </div>
+        <p id="wish-status" class="hidden-text wish-msg">✨ Wish Made! May all your dreams and wishes come true, Oluwa Dunmininu! ✨</p>
+      </section>
+
+      <!-- 6. MUSIC PLAYER CONTROLS -->
+      <section class="section-container" id="music-section">
+        <div class="card-glass music-card">
+          <div class="music-header">
+            <div id="disc-icon" class="disc">🎵</div>
+            <div>
+              <h3>Our Special Song</h3>
+              <p>A Cheerful Ukulele Waltz</p>
+            </div>
+          </div>
+          <div class="music-controls">
+            <button id="play-pause-btn" class="control-btn">▶️</button>
+            <input type="range" id="seek-bar" value="0" max="100" />
+            <span id="curr-time">0:00</span> / <span id="dur-time">0:00</span>
+          </div>
+          <div class="volume-container">
+            <span>🔊</span>
+            <input type="range" id="volume-bar" value="80" max="100" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. REPLAY & FOOTER -->
+      <footer class="footer-section">
+        <button id="replay-btn" class="secondary-btn">🔄 Replay Experience</button>
+        <p class="footer-credit">Made with all my love, just for you ❤️</p>
+      </footer>
+
+    </div>
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox">
+    <span id="lightbox-close" class="close-btn">&times;</span>
+    <img id="lightbox-img" src="" alt="Full view" />
+    <p id="lightbox-caption"></p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
